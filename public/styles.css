@@ -1,0 +1,76 @@
+body{
+  font-family: Tahoma, Geneva, sans-serif;
+}
+header{
+  text-align: center;
+  background-color: rgb(212, 209, 209);
+  color: black;
+}
+
+
+
+#page-wrapper{
+  padding: 2%;
+  width: 50%;
+  margin:auto;
+  justify-content: center;
+  border-style: solid;
+  border-width: thin;
+  
+}
+
+#centerme{
+
+  text-align: center;
+}
+
+/* How to Rotate Labels
+ .ct-label.ct-label.ct-horizontal.ct-end {
+    position: relative;
+    justify-content: flex-end;
+    text-align: right;
+    transform-origin: 100% 0;
+    transform: translate(-100%) rotate(-45deg);
+    white-space:nowrap;
+  }
+*/
+
+.ct-chart .ct-bar {
+    /* Colour of your bars */
+    stroke: green;
+    /* The width of your bars */
+    stroke-width: 10px;
+       /* Maybe you like round corners on your bars? */
+  
+  }
+
+  @media only screen and (max-width: 768px) {
+    #page-wrapper{
+
+      width:100%;
+      border-style: none;
+      background-color: white;
+    }
+    
+  }
+
+#save-chart{
+
+  text-decoration: underline;
+  cursor:pointer;
+} 
+
+#show-common{
+  cursor:pointer;
+  
+
+}
+
+#common-words-list{
+  background-color: rgb(247, 242, 242);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+  padding:2%;
+
+}
