@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WordChart</title>
-    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script> -->
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -33,7 +32,7 @@
     <br>
     <br>
     <input type="checkbox" id="exclude-common" name="exclude-common" checked>
-    <label for="exclude-common">Exclude most common words </label><span id="show-common">▶</span>
+    <label for="exclude-common">Exclude common words ('the', 'an', etc.) </label><span id="show-common">▶</span>
     <p id="common-words-list"></p>
     
     <br><br>
@@ -67,19 +66,12 @@
 
 
 
-    <div class="chart-wrapper">
-    
-    
-       <!-- <div class="ct-chart ct-perfect-fourth"></div> -->
-       
-    </div>
+   
     
 
     <canvas id="myChart" width="400" height="400"></canvas>
     
-    <script>
     
-    </script>
 
     <script src="textscan.js" type="text/javascript"></script>
 </body>

@@ -14,17 +14,17 @@ const wordCount = () => {
 
 }
 
-wordCount()
+wordCount() //immediately provide a wordcount as soon as the page loads
 
 
 document.getElementById('common-words-list').style.display="none" //hide accordion for most common words
 
-
-var mostCommonWords=["the", "a", "an", "is", "that", "of", "and", "to", "as", "this", "which", "for", "on", "it", "be", "in", "have", "into", "with", "because", "by", "or", "its", "from", "not", "what", "but", "has", "at", "can", "even", "their", "them", "if", "then", "so", "will", "are", "within", "been", "no", "only", "they", "such", "we", "i", "these", "more", "other", "was", "between", "every", "own", "who", "his", "hers", "all", "itself", "he", "there", "s", "our", "you", "just", "my", "us", "also", "do", "than", "your", "those", "she", "were", "unto", "some", "about", "after", "while", "might", "one", "yet", "whether", "when", "upon", "may", "though", "without", "him", "her", "should", "most", "many", "how", "does", "had", "well", "very", "much", "any", "would", "should", "shall", "where", "since", "rather", "doth", "indeed", "therefore", "now", "thus", "me", "I", "through", "t", "whom", "say", "said", "whose", "why"]
+//mostcommongwords is an array of words that will be filtered out
+var mostCommonWords=["the", "a", "an", "is", "that", "of", "and", "to", "as", "this", "which", "for", "on", "it", "be", "in", "have", "into", "with", "because", "by", "or", "its", "from", "not", "what", "but", "has", "at", "can", "even", "their", "them", "if", "then", "so", "will", "are", "within", "been", "no", "only", "they", "such", "we", "i", "these", "more", "other", "was", "between", "every", "own", "who", "his", "hers", "all", "itself", "he", "there", "s", "our", "you", "just", "my", "us", "also", "do", "than", "your", "those", "she", "were", "unto", "some", "about", "after", "while", "might", "one", "yet", "whether", "when", "upon", "may", "though", "without", "him", "her", "should", "most", "many", "how", "does", "had", "well", "very", "much", "any", "would", "should", "shall", "where", "since", "rather", "doth", "indeed", "therefore", "now", "thus", "me", "i", "through", "t", "whom", "say", "said", "whose", "why"]
 mostCommonWords=mostCommonWords.sort()
 
 var mostCommonWordsString=""
-for (var o=0; o<mostCommonWords.length; o++){ //conver array  into a comma separated string
+for (var o=0; o<mostCommonWords.length; o++){ //convert array  into a comma separated string
 
   mostCommonWordsString+=mostCommonWords[o]+", "
 }
@@ -37,7 +37,7 @@ var myChart
 
 
 
-const scan = () => {
+const scan = () => { //scanning function, runs as soon as button is clicked
 
     
     
@@ -49,7 +49,7 @@ const scan = () => {
     document.getElementById('word-count').innerHTML="Word count: " + textArray.length
     
 
-    var wordFreqArray=[]
+    
     var wordLib = new Object
 
 //    var addedWord=document.getElementById('add-word').value
@@ -78,12 +78,12 @@ const scan = () => {
 
 
 
-    //sort
+    
 
 
+//filter
+minCutoff=document.getElementById('min-cutoff').value //a word frequency must be above this to make it into the chart
 
-minCutoff=document.getElementById('min-cutoff').value
-//var mostCommonWords=["the", "a", "an", "is", "that", "of", "and", "to", "as", "this", "which", "for", "on", "it", "be", "in", "have", "into", "with", "because", "by", "or", "its", "from", "not", "what", "but", "has", "at", "can", "even", "their", "them", "if", "then", "so", "will", "are", "within", "been", "no", "only", "they", "such", "we", "i", "these", "more", "other", "was", "between", "every", "own", "who", "his", "hers", "all", "itself", "he", "there", "s", "our", "you", "just", "my", "us", "also", "do", "than", "your", "those", "she", "were", "unto", "some", "about", "after", "while", "might", "one", "yet", "whether", "when", "upon", "may", "though", "without", "him", "her", "should", "most", "many", "how", "does", "had", "well", "very", "much", "any", "would", "should", "shall", "where", "since", "rather", "doth", "indeed", "therefore"]
 
 
 var excludeCommon=document.getElementById('exclude-common').checked
@@ -101,7 +101,7 @@ for (prop in wordLib) {
 }
 
 
-
+//grab user's row order option from radio button
 
 var rowOrder=document.getElementsByName('row-order')
 
@@ -109,16 +109,16 @@ for (var i = 0, length = rowOrder.length; i < length; i++)
 {
  if (rowOrder[i].checked)
  {
-  // do whatever you want with the checked radio
+  
   var rowOrderOption=rowOrder[i].value;
 
-  // only one radio can be logically checked, don't check the rest
+  
   break;
  }
 }
 
 
-var orderedWordLib={}
+
 
 //sorting functions
 
@@ -129,12 +129,12 @@ var chartData = []
 //if alphabetical is checked
 if (rowOrderOption=="alphabetical") {
 Object.keys(wordLib).sort().forEach(function(key) {
-   orderedWordLib[key] = wordLib[key];
-   chartLabels.push(key).toString()
+   
+   chartLabels.push(key).toString() //chartLables and chartData extract the sorted data from wordlib into sep arrays (same w other sorting routines)
    chartData.push(wordLib[key])
 });
 
-wordLib=orderedWordLib
+
 
 }
 
@@ -161,9 +161,9 @@ if (rowOrderOption=="low-to-high") {
   for (prop in wordLib) {delete wordLib[prop]} //empty out wordlib
   for (o=0; o<sortableArray.length;o++){
     sortableArray[o][0]=sortableArray[o][0].toString() //added
-    //console.log(sortableArray[o][0])
+    
     wordLib[sortableArray[o][0]]=sortableArray[o][1]
-    //console.log('indiv wordlib', wordLib)
+    
     chartLabels.push(sortableArray[o][0]).toString()
     chartData.push(sortableArray[o][1])
 
@@ -171,7 +171,6 @@ if (rowOrderOption=="low-to-high") {
   
   
 }
-
 
 
 
@@ -197,32 +196,17 @@ if (rowOrderOption=="high-to-low") {
   
   for (o=0; o<sortableArray.length;o++){
     sortableArray[o][0]=sortableArray[o][0].toString() //added
-    //console.log(sortableArray[o][0])
+    
     wordLib[sortableArray[o][0]]=sortableArray[o][1]
-    //console.log('indiv wordlib', wordLib)
+    
     chartLabels.push(sortableArray[o][0]).toString()
     chartData.push(sortableArray[o][1])
   }
   
 
-
-
-
   
-  //console.log('wordlib high to low?', wordLib)
-  //console.log('sortable array', sortableArray)
-  //console.log("chartlabels", chartLabels)
-  //console.log("chartdata", chartData)
   
 }
-
-
-
-
-  
-
-
-
 
     
     
@@ -233,7 +217,7 @@ if (rowOrderOption=="high-to-low") {
     if(myChart){myChart.destroy()} //old chart instance has to be destroyed to avoid a weird flickering glitch
 
     
-    //color options
+    //color options (at some point I could add a user controlled color selector)
 
 
 
@@ -315,17 +299,11 @@ if (rowOrderOption=="high-to-low") {
     }
 });
     
-
-
-
-
-    //console.log(wordLib)
-    //console.log(Object.keys(wordLib))
-    //console.log(Object.values(wordLib))
+    
 }
 
 
-const savechart = () =>{
+const savechart = () =>{ 
 
 var canvas=document.getElementById('myChart')
   //var urlbase64=canvas.toDataURL("image/png")
@@ -347,6 +325,7 @@ document.getElementById("scan").addEventListener("click", scan)
 //Upon clicking save
 document.getElementById("save-chart").addEventListener("click", savechart)
 
+//accordion to show common words
 document.getElementById("show-common").addEventListener("click", function () {
   
   if(document.getElementById('common-words-list').style.display==="none"){
