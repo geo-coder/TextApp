@@ -4,7 +4,8 @@ const wordCount = () => {
   var text = document.getElementById('text').value.toLowerCase() //grab full string from textarea
   var textArray=[]    
   if(text){
-     textArray=text.match(/\w+/g) //textarray grabs any word using regex
+     //textArray=text.match(/\w+/g) //textarray grabs any word using regex
+     textArray=text.match(/[\w']+/g)
   } 
 
   document.getElementById('word-count').innerHTML="Word count: " + textArray.length
@@ -20,7 +21,7 @@ wordCount() //immediately provide a wordcount as soon as the page loads
 document.getElementById('common-words-list').style.display="none" //hide accordion for most common words
 
 //mostcommongwords is an array of words that will be filtered out
-var mostCommonWords=["the", "a", "an", "is", "that", "of", "and", "to", "as", "this", "which", "for", "on", "it", "be", "in", "have", "into", "with", "because", "by", "or", "its", "from", "not", "what", "but", "has", "at", "can", "even", "their", "them", "if", "then", "so", "will", "are", "within", "been", "no", "only", "they", "such", "we", "i", "these", "more", "other", "was", "between", "every", "own", "who", "his", "hers", "all", "itself", "he", "there", "s", "our", "you", "just", "my", "us", "also", "do", "than", "your", "those", "she", "were", "unto", "some", "about", "after", "while", "might", "one", "yet", "whether", "when", "upon", "may", "though", "without", "him", "her", "should", "most", "many", "how", "does", "had", "well", "very", "much", "any", "would", "should", "shall", "where", "since", "rather", "doth", "indeed", "therefore", "now", "thus", "me", "i", "through", "t", "whom", "say", "said", "whose", "why"]
+var mostCommonWords=["the", "a", "an", "is", "that", "of", "and", "to", "as", "this", "which", "for", "on", "it", "be", "in", "have", "into", "with", "because", "by", "or", "its", "from", "not", "what", "but", "has", "at", "can", "even", "their", "them", "if", "then", "so", "will", "are", "within", "been", "no", "only", "they", "such", "we", "i", "these", "more", "other", "was", "between", "every", "own", "who", "his", "hers", "all", "itself", "he", "there", "our", "you", "just", "my", "us", "also", "do", "than", "your", "those", "she", "were", "unto", "some", "about", "after", "while", "might", "one", "yet", "whether", "when", "upon", "may", "though", "without", "him", "her", "should", "most", "many", "how", "does", "had", "well", "very", "much", "any", "would", "should", "shall", "where", "since", "rather", "doth", "indeed", "therefore", "now", "thus", "me", "i", "through", "whom", "say", "said", "whose", "why"]
 mostCommonWords=mostCommonWords.sort()
 
 var mostCommonWordsString=""
@@ -44,7 +45,7 @@ const scan = () => { //scanning function, runs as soon as button is clicked
     var text = document.getElementById('text').value.toLowerCase() //grab full string from textarea
     
 
-    var textArray=text.match(/\w+/g) //textarray grabs any word using regex
+    var textArray=text.match(/[\w']+/g) //textarray grabs any word using regex
 
     document.getElementById('word-count').innerHTML="Word count: " + textArray.length
     
